@@ -20,6 +20,9 @@ angular.module('nag.attribute', [])
             } else {
               var attributeParts = attribute.split('::');
 
+              //this will allow you to add attribute without any value (like disabled for input field)
+              attributeParts[1] = attributeParts[1] || '';
+
               if(check === true)  {
                 $(element).attr(attributeParts[0], attributeParts[1]);
               } else {
