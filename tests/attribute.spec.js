@@ -8,6 +8,7 @@ describe('Attribute', function(){
     $compile = $injector.get('$compile');
 
     $scope.attribute1 = false;
+    $scope.value1 = null;
     $scope.attribute2 = false;
   }));
 
@@ -54,5 +55,26 @@ describe('Attribute', function(){
 
     expect(element.attr('data-test')).toEqual('on');
     expect(element.attr('data-test2')).toEqual('value1');
+  });
+
+  it("should be able to use scope value for attribute value", function() {
+    $scope.attribute1 = true;
+    $scope.value1 = 'foo'
+
+    var element = setupElement($scope, "{'data-test::{value1}': attribute1}");
+
+    expect(element.attr('data-test')).toEqual('foo');
+  });
+
+  it("should update attribute value is scope variable changes", function() {
+    $scope.attribute1 = true;
+    $scope.value1 = 'foo'
+
+    var element = setupElement($scope, "{'data-test::{value1}': attribute1}");
+
+    $scope.value1 = 'bar';
+    $scope.$digest();
+
+    expect(element.attr('data-test')).toEqual('bar');
   });
 });
