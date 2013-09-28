@@ -1,31 +1,61 @@
 /**
  * Allows you to dynamically add/remove attributes
  *
+ * This is a simple example just using a value to toggle the attribute:
+ *
+ * ```html
+ * <div nag-attribute="{'data-test::on': customAttribute}"
+ *      ng-click="customAttribute = !customAttribute">
+ *   Click on me to toggle my data-test attribute on/off
+ * </div>
+ *
+ * <script>
+ *   //code inside the controller
+ *   $scope.customAttribute = false;
+ * </script>
+ * ```
+ *
+ * This is an example of being able to switch the value of a attribute instead of just toggling it:
+ *
+ * ```html
+ * <div nag-attribute="{'data-test': {'value1': customAttribute2, 'value2': !customAttribute2}}"
+ *      ng-click="customAttribute2 = !customAttribute2"
+ *      data-test="value2">
+ *   Click on me to toggle my data-test attribute value
+ * </div>
+ *
+ * <script>
+ *   //code inside the controller
+ *   $scope.customAttribute = false;
+ *   $scope.customAttribute2 = false;
+ * </script>
+ * ```
+ *
+ * This is an example of both in action:
+ *
+ * ```html
+ * <div nag-attribute="{'data-test::on': customAttribute3, 'data-test2': {'value1': customAttribute4, 'value2': !customAttribute4}}"
+ *      ng-click="customFunction()"
+ *      data-test2="value2">
+ *   Click on me to toggle my data-test attribute on/off and data-test2 attribute value
+ * </div>
+ *
+ * <script>
+ *   //code inside the controller
+ *   $scope.customAttribute3 = false;
+ *   $scope.customAttribute4 = false;
+ *
+ *   $scope.customFunction = function() {
+ *     $scope.customAttribute3 = !$scope.customAttribute3;
+ *     $scope.customAttribute4 = !$scope.customAttribute4;
+ *   };
+ * </script>
+ * ```
+ *
  * @module nag.attribute
  * @ngdirective nagAttribute
  *
- * @example
- <div style="cursor: pointer" nag-attribute="{'data-test::on': customAttribute}" ng-click="customAttribute = !customAttribute">
-   Click on me to toggle my data-test attribute on/off
- </div>
- <div style="cursor: pointer" nag-attribute="{'data-test': {'value1': customAttribute2, 'value2': !customAttribute2}}" ng-click="customAttribute2 = !customAttribute2" data-test="value2">
-   Click on me to toggle my data-test attribute value
- </div>
- <div style="cursor: pointer" nag-attribute="{'data-test::on': customAttribute3, 'data-test2': {'value1': customAttribute4, 'value2': !customAttribute4}}" ng-click="customFunction()" data-test2="value2">
-   Click on me to toggle my data-test attribute on/off and data-test2 attribute value
- </div>
-
- <script>
-   $scope.customAttribute = false;
-   $scope.customAttribute2 = false;
-   $scope.customAttribute3 = false;
-   $scope.customAttribute4 = false;
-
-   $scope.customFunction = function() {
-     $scope.customAttribute3 = !$scope.customAttribute3;
-     $scope.customAttribute4 = !$scope.customAttribute4;
-   };
- </script>
+ * @nghtmlattribute {expression} nag-attribute
  */
 angular.module('nag.attribute', [])
 .directive('nagAttribute', [function() {

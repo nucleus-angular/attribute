@@ -1,0 +1,16 @@
+{
+  "name": "Nucleus Angular Attribute",
+  "description": "Nucleus Angular Attribute",
+  "version": "0.4.0",
+  "options": {
+    "outdir": "./docs",
+    "jsonDir": "json",
+    "webDir": "web",
+    "paths": [
+      "."
+    ],
+    "ignorePaths": [
+      "docs"
+    ]
+  }
+}
