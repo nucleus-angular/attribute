@@ -1,7 +1,9 @@
 /**
- * Allows you to dynamically add/remove attributes
+ * # Attributes
  *
- * This is a simple example just using a value to toggle the attribute:
+ * This allows you to dynamically be able to add or change attribute values for an element. There are a few different formats the this object can be formatted in.
+ *
+ * The first format is where the key has both the attribute name and value separated by a double colon (::) and the value is the conditional that determines whether or not this attribute/value value should be on the element. This format is good for an attribute that will allows have one value and eiher should or should not be there.
  *
  * ```html
  * <div nag-attribute="{'data-test::on': customAttribute}"
@@ -15,7 +17,7 @@
  * </script>
  * ```
  *
- * This is an example of being able to switch the value of a attribute instead of just toggling it:
+ * The second format is good for attribute that should always be on the element but you want to be able to toggle the value of the attribute. In the second format, the key of the object is the name of the attribute and the value is another object. That object value with have multiple properties with the name if the value for the attribute and the value is the consitional to check to see if that should be the value of the attribute.
  *
  * ```html
  * <div nag-attribute="{'data-test': {'value1': customAttribute2, 'value2': !customAttribute2}}"
@@ -30,32 +32,26 @@
  *   $scope.customAttribute2 = false;
  * </script>
  * ```
- *
- * This is an example of both in action:
+ * 
+ * Now you also might want to be able to set the value of the attribute to the value of something on the scope.  Well we can handle that too.  In this case you use the :: format for the key however the second part is wrapper in curly brackets instead of just a static value.
  *
  * ```html
- * <div nag-attribute="{'data-test::on': customAttribute3, 'data-test2': {'value1': customAttribute4, 'value2': !customAttribute4}}"
- *      ng-click="customFunction()"
- *      data-test2="value2">
- *   Click on me to toggle my data-test attribute on/off and data-test2 attribute value
+ * <div nag-attribute="{'data-test::{attributeValue}': true}">
+ *   Attribute value based on property of the scope
  * </div>
  *
  * <script>
  *   //code inside the controller
- *   $scope.customAttribute3 = false;
- *   $scope.customAttribute4 = false;
+ *   $scope.attributeValue = 'attribute-value';
  *
- *   $scope.customFunction = function() {
- *     $scope.customAttribute3 = !$scope.customAttribute3;
- *     $scope.customAttribute4 = !$scope.customAttribute4;
- *   };
+ *   //this value would change based on something somewhere down the road... 
  * </script>
  * ```
  *
  * @module nag.attribute
  * @ngdirective nagAttribute
  *
- * @nghtmlattribute {expression} nag-attribute
+ * @nghtmlattribute {expression} nag-attribute Expression with attributes, values and they conditions for showing
  */
 angular.module('nag.attribute', [])
 .directive('nagAttribute', [function() {
