@@ -53,7 +53,7 @@
  *
  * @nghtmlattribute {expression} nag-attribute Expression with attributes, values and they conditions for showing
  */
-angular.module('nag.attribute', [])
+angular.module('nag.attribute')
 .directive('nagAttribute', [function() {
     return function(scope, element, attributes) {
       var valueWatchApplied = false;

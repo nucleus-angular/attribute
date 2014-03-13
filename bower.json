@@ -3,11 +3,11 @@
   "version": "0.2.2",
   "dependencies": {},
   "devDependencies": {
-    "jquery": "1.10.x",
-    "moment": "2.0.0",
+    "jquery": "2.x.x",
+    "moment": "2.x.x",
     "modernizr": "2.6.2",
-    "lodash": "1.2.1",
-    "unstable-angular-complete": "1.2.0rc2",
+    "lodash": "2.x.x",
+    "angular": "1.2.x",
     "angular-ui-router": "0.2.0"
   }
 }
