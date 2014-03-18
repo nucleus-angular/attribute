@@ -1,5 +1,5 @@
 /**
- * # Attributes
+ * # Attribute
  *
  * This allows you to dynamically be able to add or change attribute values for an element. There are a few different formats the this object can be formatted in.
  *
