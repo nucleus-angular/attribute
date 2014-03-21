@@ -28,7 +28,6 @@
  *
  * <script>
  *   //code inside the controller
- *   $scope.customAttribute = false;
  *   $scope.customAttribute2 = false;
  * </script>
  * ```

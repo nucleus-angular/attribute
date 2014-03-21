@@ -1,0 +1,14 @@
+<div class="home-page">
+  <div nag-attribute="{'data-test::on': customAttribute}"
+       ng-click="customAttribute = !customAttribute">
+   Click on me to toggle my data-test attribute on/off
+  </div>
+  <div nag-attribute="{'data-test': {'value1': customAttribute2, 'value2': !customAttribute2}}"
+       ng-click="customAttribute2 = !customAttribute2"
+       data-test="value2">
+    Click on me to toggle my data-test attribute value
+  </div>
+  <div nag-attribute="{'data-test::{attributeValue}': true}">
+    Attribute value based on property of the scope
+  </div>
+</div>
